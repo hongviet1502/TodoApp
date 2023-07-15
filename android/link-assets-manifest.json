@@ -1,0 +1,37 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "assets/fonts/Inter-Bold.ttf",
+      "sha1": "48747b7a60086f97af0d373febcbd1f1bee87f17"
+    },
+    {
+      "path": "assets/fonts/Inter-Medium.ttf",
+      "sha1": "a418a8ba73bbcfa8c131c426ab836d78457afa9b"
+    },
+    {
+      "path": "assets/fonts/Inter-Regular.ttf",
+      "sha1": "7237d9cf55f177702066a28a4dde1e4c7e8ab576"
+    },
+    {
+      "path": "assets/fonts/Inter-SemiBold.ttf",
+      "sha1": "431007da316de60d85174aeec9b8389b5c73e7d6"
+    },
+    {
+      "path": "assets/fonts/Roboto-Bold.ttf",
+      "sha1": "62442a18a9fe9457c1afeabf683d263a691b7798"
+    },
+    {
+      "path": "assets/fonts/Roboto-Medium.ttf",
+      "sha1": "3c6a09fcc6a454924c81af7dff94fc6d399ed79b"
+    },
+    {
+      "path": "assets/fonts/Roboto-Regular.ttf",
+      "sha1": "56c5c0d38bde4c1f1549dda43db37b09c608aad3"
+    },
+    {
+      "path": "assets/fonts/Roboto-Thin.ttf",
+      "sha1": "58c733e22bceeaf9609ce578eca92ac303c6d92f"
+    }
+  ]
+}
