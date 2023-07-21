@@ -3,14 +3,16 @@ import React from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { HEIGHT, WIDTH } from '../../config/app'
 
+console.log(HEIGHT);
+
 export default function OnboardingScreen(props: NativeStackScreenProps<any>) {
     const { navigation, route } = props
     return (
         <View style={styles.container}>
-            <View>
+            <View style={{flex: 3}}>
                 <Image source={require('../../../assets/images/intro.png')} style={styles.image} />
             </View>
-            <View style={styles.loginContainer}>
+            <View style={[styles.loginContainer, {flex: 2}]}>
                 <Text style={styles.header}>Best task management app</Text>
                 <Text style={styles.subHeader}>Get organized by sorting out all your tasks and boost your productivity.</Text>
                 <TouchableOpacity 
@@ -35,8 +37,9 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     image: {
-        width: WIDTH,
-        height: HEIGHT * 0.55,
+        width: '100%',
+        height: '100%',
+        resizeMode: 'cover'
     },
     loginContainer: {
         flex: 1,

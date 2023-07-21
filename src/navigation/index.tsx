@@ -5,6 +5,7 @@ import LoginScreen from '../screens/LoginScreen/LoginScreen';
 import SignUpScreen from '../screens/SignUpScreen/SignUpScreen';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import OnboardingScreen from '../screens/OnboardingScreen/OnboardingScreen';
+import Login from './Login/Login';
 
 const Stack = createNativeStackNavigator();
 export default function Navigation() {
@@ -14,6 +15,7 @@ export default function Navigation() {
       <Stack.Screen name="Onboarding" component={OnboardingScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
+      <Stack.Screen name="LoggedIn" component={Login} />
     </Stack.Navigator>
   );
 };
