@@ -3,23 +3,56 @@ import React from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import DefaultLayout from '../../components/templates/DefaultLayout/DefaultLayout'
 import { HEIGHT, WIDTH } from '../../config/app'
+import auth from '@react-native-firebase/auth'
+import Toast from 'react-native-toast-message'
 
 export default function LoginScreen(props: NativeStackScreenProps<any>) {
   const { navigation, route } = props
+  const [email, setEmail] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  function showToast(message : string, type : string){
+    Toast.show({
+      type: type,
+      // text1: 'Thành công',
+      text2: message,
+    });
+  }
+  function signIn(){
+    auth()
+    .signInWithEmailAndPassword(email, password)
+    .then(() => {
+      navigation.navigate('LoggedIn')
+      showToast('Logged in successfully!', "success")
+    })
+    .catch(error => {
+      if (error.code === 'auth/wrong-password') {
+        showToast('Wrong password!', "error")
+      }
+
+      else if (error.code === 'auth/user-not-found') {
+        showToast('User not found!', "error")
+      }
+      else {
+        showToast('Something went wrong!', "error")
+      }
+      console.error(error);
+    })
+  }
   return (
     <View style={styles.container}>
       <Text style = {styles.header}>Welcome back!</Text>
       <View style={styles.inputContainer}>
-        <TextInput placeholder="Email" style={styles.input} />
-        <TextInput placeholder="Password" style={styles.input} />
+        <TextInput placeholder="Email" style={styles.input} onChangeText={emailValue => setEmail(emailValue)}/>
+        <TextInput placeholder="Password" style={styles.input} onChangeText={passwordValue => setPassword(passwordValue)} />
       </View>
       <TouchableOpacity
         style={[styles.loginButton]}
-        onPress={() => navigation.navigate('LoggedIn')}
+        onPress={signIn}
       >
         <Text style={styles.buttonText}>Log in</Text>
       </TouchableOpacity>
       <Text style={styles.text}>Not registered? <Text style={styles.textSignup} onPress={() => {navigation.navigate('SignUp')}}>Sign up!</Text></Text>
+      <Toast />
     </View>
   )
 }

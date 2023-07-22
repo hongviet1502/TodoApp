@@ -17,7 +17,7 @@ export default function Home(props : NativeStackScreenProps<any>) {
           let iconName = 'home'
           if (route.name === 'HomeScreen') {
             iconName = 'home'
-          } else if (route.name === 'TasksScreen') {
+          } else if (route.name === 'TasksRoute') {
             iconName = 'calendar'
           }
           return (

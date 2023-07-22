@@ -5,7 +5,14 @@ import Feather from 'react-native-vector-icons/Feather'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { DrawerActions } from '@react-navigation/native'
 import CheckBox from '@react-native-community/checkbox'; 
+import { taskService } from '../../services/TaskService'
+import firestore  from '@react-native-firebase/firestore'
+import { Task } from '../../Models/Task'
 export default function TaskScreen(props: PropsWithChildren<TaskScreenProps>) {
+  // GEt tasks ở đây
+  const task = taskService.getTasks()
+  console.log(task);
+  //---------
   const { navigation, route } = props
   const [toggleCheckBox, setToggleCheckBox] = React.useState(false)
   const data = [
@@ -46,7 +53,7 @@ export default function TaskScreen(props: PropsWithChildren<TaskScreenProps>) {
         </TouchableOpacity>
       }>
       <View style={styles.container}>
-        <Text style={styles.header}>To do Tasks:</Text>
+        <Text style={styles.header}>To do Tasks: </Text>
         <View style={styles.taskType}>
           <FlatList 
             data={data}

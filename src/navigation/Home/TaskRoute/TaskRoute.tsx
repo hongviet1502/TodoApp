@@ -8,7 +8,7 @@ export default function TaskRoute() {
   return (
     <Stack.Navigator
       screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="TaskScreen" component={TaskScreen} />
+      <Stack.Screen name="TasksScreen" component={TaskScreen} />
       <Stack.Screen name="AddNewTaskScreen" component={AddNewTaskScreen} />
     </Stack.Navigator>
   )
