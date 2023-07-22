@@ -16,12 +16,12 @@ export class TaskService {
                 return false
             })
     }
-    getTasks = () => {
-        firestore()
+    getTasks = async () => {
+        const tasks: Task[] = []
+        await firestore()
             .collection('Tasks')
             .get()
             .then(querySnapshot => {
-                const tasks: Task[] = []
                 querySnapshot.forEach(documentSnapshot => {
                     tasks.push({
                         // id: documentSnapshot.id,
@@ -32,6 +32,7 @@ export class TaskService {
                 });
                 return tasks
             });
+        console.log(tasks)
     }
 }
 export const taskService = new TaskService()

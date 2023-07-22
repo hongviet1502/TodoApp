@@ -10,8 +10,26 @@ import firestore  from '@react-native-firebase/firestore'
 import { Task } from '../../Models/Task'
 export default function TaskScreen(props: PropsWithChildren<TaskScreenProps>) {
   // GEt tasks ở đây
-  const task = taskService.getTasks()
-  console.log(task);
+  const [dataTask, setDataTask] = React.useState<Task[]>([])
+  const getTasks = async () => {
+    const tasks: Task[] = []
+    await firestore()
+        .collection('Tasks')
+        .get()
+        .then(querySnapshot => {
+            const taskData = querySnapshot.forEach(documentSnapshot => {
+                tasks.push({
+                    // id: documentSnapshot.id,
+                    description: documentSnapshot.data().description,
+                    type: documentSnapshot.data().type,
+                    deadline: documentSnapshot.data().deadline
+                })
+            });
+            setDataTask(tasks)
+            return tasks
+        });
+        console.log(dataTask[0])
+  }
   //---------
   const { navigation, route } = props
   const [toggleCheckBox, setToggleCheckBox] = React.useState(false)
@@ -33,6 +51,9 @@ export default function TaskScreen(props: PropsWithChildren<TaskScreenProps>) {
       title: 'Việt đẹp trai',
     }
   ]
+  React.useEffect(() => {
+    getTasks()
+  }, []);
 
   function renderItem({ item }: any) {
     return (
